@@ -73,7 +73,10 @@ void List_Error() {
  * @param list Ukazatel na strukturu jednosměrně vázaného seznamu
  */
 void List_Init(List *list) {
-    list = malloc(sizeof(list));
+    list = malloc(sizeof(*list));
+
+    if (list == NULL)
+        List_Error();
 
     list->firstElement = NULL;
     list->activeElement = NULL;
@@ -90,6 +93,8 @@ void List_Dispose(List *list) {
     while (list->firstElement != NULL) {
         List_DeleteFirst(list);
     }
+
+    free(list);
 }
 
 /**
