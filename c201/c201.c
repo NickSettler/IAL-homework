@@ -99,7 +99,7 @@ void List_Dispose(List *list) {
  * @param data Hodnota k vložení na začátek seznamu
  */
 void List_InsertFirst(List *list, int data) {
-    ListElementPtr firstElement = malloc(sizeof(ListElementPtr));
+    ListElementPtr firstElement = malloc(sizeof(struct ListElement));
 
     if (firstElement == NULL)
         List_Error();
@@ -180,7 +180,7 @@ void List_DeleteAfter(List *list) {
 void List_InsertAfter(List *list, int data) {
     if (!List_IsActive(list)) return;
 
-    ListElementPtr newElement = malloc(sizeof(ListElementPtr));
+    ListElementPtr newElement = malloc(sizeof(struct ListElement));
     if (newElement == NULL) List_Error();
 
     newElement->data = data;
